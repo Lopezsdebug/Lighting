@@ -1,38 +1,57 @@
-# Meu Discord
+# Lighting — projeto enxuto
 
-Aplicação estilo Discord com:
-- Login/cadastro local para demonstração
-- Servidores e canais
-- Chat em tempo real com Socket.IO
-- Sala de voz
-- Compartilhamento de tela com WebRTC
-- Interface responsiva
+Versão reorganizada do projeto Lighting para evitar a grande quantidade de arquivos do React/Vite.
 
-## Requisitos
-- Node.js 20 ou superior
-- npm
+## Estrutura
 
-## Instalação
+```text
+Lighting/
+├── package.json
+├── server.js
+├── .gitignore
+└── public/
+    ├── index.html
+    ├── app.js
+    └── style.css
+```
 
-No terminal, dentro desta pasta:
+São apenas **7 arquivos**.
+
+## Rodar no computador
 
 ```bash
 npm install
-npm run install-all
-npm run dev
+npm start
 ```
 
-Depois abra:
+Depois abra `http://localhost:3001`.
 
-http://localhost:5173
+## O que foi mantido
 
-Para testar voz e tela entre duas pessoas, abra o site em duas janelas/navegadores diferentes.
+- Login/perfil local
+- Servidores e canais
+- Chat em tempo real com Socket.IO
+- Canais de voz
+- Microfone via WebRTC
+- Compartilhamento de tela via WebRTC
+- Sinalização WebRTC no Node.js
+- STUN e suporte opcional a TURN do Cloudflare
+- Interface responsiva estilo Discord
 
-### Observação sobre produção
+## Publicar
 
-A versão local usa um servidor de sinalização Socket.IO e WebRTC. Para uso público na internet, recomenda-se:
-- HTTPS
-- banco de dados
-- autenticação real
-- TURN server para conexões WebRTC que não conseguem estabelecer conexão direta
-- persistência de servidores, canais e mensagens
+Este formato é adequado para colocar em um único serviço Node, como Render, Railway ou outro host compatível.
+
+Com o servidor publicado, o frontend também é servido pelo mesmo endereço. Não é necessário Vercel separado.
+
+### Variáveis opcionais
+
+`PORT` — fornecida normalmente pelo serviço de hospedagem.
+
+`FRONTEND_URL` — origem permitida. Pode ser omitida quando o frontend e o backend estão no mesmo endereço.
+
+`TURN_KEY_ID` e `TURN_KEY_API_TOKEN` — opcionais para fornecer TURN pelo Cloudflare. Sem eles, o projeto usa STUN.
+
+## GitHub
+
+A pasta contém somente 7 arquivos do projeto. Não envie `node_modules`; o `.gitignore` já impede isso.

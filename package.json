@@ -1,11 +1,8 @@
 {
-  "name": "meu-discord",
+  "name": "lighting",
+  "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "install-all": "npm --prefix backend install && npm --prefix frontend install",
-    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\""
-  },
-  "devDependencies": {
-    "concurrently": "^9.2.1"
-  }
+  "type": "module",
+  "scripts": { "start": "node server.js", "dev": "node server.js" },
+  "dependencies": { "cors": "^2.8.5", "express": "^5.1.0", "socket.io": "^4.8.1" }
 }
